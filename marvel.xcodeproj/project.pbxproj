@@ -20,6 +20,11 @@
 		CFD4251223EEEA20005CEB8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4251123EEEA20005CEB8B /* HomeViewModel.swift */; };
 		CFD4251523EEEA3E005CEB8B /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4251423EEEA3E005CEB8B /* ApiManager.swift */; };
 		CFD4251723EEEAD2005CEB8B /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4251623EEEAD2005CEB8B /* HomeCoordinator.swift */; };
+		CFD4251923EEFC73005CEB8B /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4251823EEFC73005CEB8B /* ApiResponse.swift */; };
+		CFD4251B23EF002F005CEB8B /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4251A23EF002F005CEB8B /* Repository.swift */; };
+		CFD4251E23EF016C005CEB8B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4251D23EF016C005CEB8B /* Error.swift */; };
+		CFD4252023EF0878005CEB8B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4251F23EF0878005CEB8B /* HomeView.swift */; };
+		CFD4252223EF2A3E005CEB8B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4252123EF2A3E005CEB8B /* HomeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +59,11 @@
 		CFD4251123EEEA20005CEB8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CFD4251423EEEA3E005CEB8B /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		CFD4251623EEEAD2005CEB8B /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		CFD4251823EEFC73005CEB8B /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		CFD4251A23EF002F005CEB8B /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		CFD4251D23EF016C005CEB8B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		CFD4251F23EF0878005CEB8B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CFD4252123EF2A3E005CEB8B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,7 @@
 				CF682C8623EEE647002C4720 /* AppDelegate.swift */,
 				CF682C8823EEE647002C4720 /* SceneDelegate.swift */,
 				CFD4250E23EEE969005CEB8B /* Home */,
+				CFD4251C23EF014E005CEB8B /* Model */,
 				CFD4251323EEEA29005CEB8B /* Repository */,
 				CFD4250D23EEE958005CEB8B /* Coordinators */,
 				CF682C8F23EEE648002C4720 /* Assets.xcassets */,
@@ -155,6 +166,8 @@
 			children = (
 				CFD4250F23EEEA0F005CEB8B /* HomeViewController.swift */,
 				CFD4251123EEEA20005CEB8B /* HomeViewModel.swift */,
+				CFD4251F23EF0878005CEB8B /* HomeView.swift */,
+				CFD4252123EF2A3E005CEB8B /* HomeCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -162,9 +175,19 @@
 		CFD4251323EEEA29005CEB8B /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				CFD4251A23EF002F005CEB8B /* Repository.swift */,
 				CFD4251423EEEA3E005CEB8B /* ApiManager.swift */,
+				CFD4251823EEFC73005CEB8B /* ApiResponse.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		CFD4251C23EF014E005CEB8B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFD4251D23EF016C005CEB8B /* Error.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,12 +357,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD4251923EEFC73005CEB8B /* ApiResponse.swift in Sources */,
 				CFD4251023EEEA0F005CEB8B /* HomeViewController.swift in Sources */,
 				CFD4251223EEEA20005CEB8B /* HomeViewModel.swift in Sources */,
+				CFD4251E23EF016C005CEB8B /* Error.swift in Sources */,
 				CFD4250C23EEE8F1005CEB8B /* ApplicationCoordinator.swift in Sources */,
+				CFD4252223EF2A3E005CEB8B /* HomeCollectionViewCell.swift in Sources */,
 				CFD4251523EEEA3E005CEB8B /* ApiManager.swift in Sources */,
 				CFD4250A23EEE8C4005CEB8B /* Coordinator.swift in Sources */,
 				CFD4251723EEEAD2005CEB8B /* HomeCoordinator.swift in Sources */,
+				CFD4251B23EF002F005CEB8B /* Repository.swift in Sources */,
+				CFD4252023EF0878005CEB8B /* HomeView.swift in Sources */,
 				CF682C8723EEE647002C4720 /* AppDelegate.swift in Sources */,
 				CF682C8923EEE647002C4720 /* SceneDelegate.swift in Sources */,
 			);
