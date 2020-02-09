@@ -22,7 +22,7 @@ final class HomeViewModel {
     func loadInitialData(){
         guard !isFetching else { return }
         isFetching = true
-        repository.fetchAllCharacters(offset: 0) { (data, error) in
+        repository.fetchAllCharacters(offset: currentOffset) { (data, error) in
             if let error = error {
                 print(error.errorDescription!)
             } else if let data = data {
@@ -38,7 +38,11 @@ final class HomeViewModel {
     func loadNewData(){
         guard !isFetching else { return }
         isFetching = true
-        currentOffset += 20
+        if currentOffset + 20 <= total {
+            currentOffset += 20
+        } else {
+            currentOffset += (total - currentOffset)
+        }
         repository.fetchAllCharacters(offset: currentOffset){ (data, error) in
             if let error = error {
                 print(error.errorDescription!)

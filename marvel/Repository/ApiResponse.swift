@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct ApiResponse: Decodable {
+struct CharacterResponse: Decodable {
     let code: Int?
     let status: String?
     let copyright: String?
     let attributionText: String?
     let attributionHTML: String?
-    let data: Data?
+    let data: CharacterData?
 }
 
-struct Data: Decodable {
+struct CharacterData: Decodable {
     let offset: Int?
     let limit: Int?
     let total: Int?
@@ -30,20 +30,29 @@ struct CharacterEntry: Decodable {
     let name: String?
     let description: String?
     let resourceURI: String?
-    let comics: Comics?
     let thumbnail: Thumbnail?
 }
 
-struct Comics: Decodable {
-    let available: Int?
-    let collectionURI: String?
-    let items: [Comic]?
-    let returned: Int?
+struct ComicsResponse: Decodable {
+    let code: Int?
+    let status: String?
+    let copyright: String?
+    let attributionText: String?
+    let attributionHTML: String?
+    let data: ComicsData?
 }
 
-struct Comic: Decodable {
-    let resourceURI: String?
-    let name: String?
+struct ComicsData: Decodable {
+    let offset: Int?
+    let limit: Int?
+    let total: Int?
+    let count: Int?
+    let results: [ComicEntry]
+}
+
+struct ComicEntry: Decodable {
+    let title: String?
+    let thumbnail: Thumbnail?
 }
 
 struct Thumbnail: Decodable {

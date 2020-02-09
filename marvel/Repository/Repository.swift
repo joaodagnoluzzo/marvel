@@ -8,7 +8,8 @@
 
 import Foundation
 
-typealias DataResult = (Data?, SystemError?)->()
+typealias DataResult = (CharacterData?, SystemError?)->()
+typealias ComicsResult = (ComicsData?, SystemError?)->()
 
 final class Repository {
     private let networkManager: NetworkManager
@@ -19,6 +20,10 @@ final class Repository {
     
     func fetchAllCharacters(offset: Int, completion: @escaping DataResult) {
         networkManager.fetchAllCharacters(offset: offset, completion: completion)
+    }
+    
+    func fetchComicsForCharacter(id: Int, offset: Int, completion: @escaping ComicsResult){
+        networkManager.fetchComicsForCharacter(id: id, offset: offset, completion: completion)
     }
     
 }

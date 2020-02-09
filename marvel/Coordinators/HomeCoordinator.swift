@@ -12,6 +12,7 @@ final class HomeCoordinator: Coordinator {
     
     private let presenter: UINavigationController!
     private var homeViewController: HomeViewController?
+    private var detailsCoordinator: DetailsCoordinator?
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -19,8 +20,15 @@ final class HomeCoordinator: Coordinator {
     
     func start(){
         let homeViewController = HomeViewController()
+        homeViewController.delegate = self
         self.presenter.pushViewController(homeViewController, animated: true)
         self.homeViewController = homeViewController
-        self.homeViewController?.title = "Characters"
+    }
+}
+
+extension HomeCoordinator: HomeViewControllerDelegate {
+    func homeViewControllerShouldPresentDetailsOf(_ character: CharacterEntry) {
+        self.detailsCoordinator = DetailsCoordinator(presenter: presenter, character: character)
+        self.detailsCoordinator?.start()
     }
 }

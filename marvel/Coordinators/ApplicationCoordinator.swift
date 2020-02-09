@@ -19,7 +19,10 @@ final class ApplicationCoordinator: Coordinator {
         self.rootViewController = UINavigationController()
         self.rootViewController.navigationBar.isTranslucent = false
         self.rootViewController.navigationBar.prefersLargeTitles = true
-        self.rootViewController.view.backgroundColor = UIColor(named: "SystemColorAdaptive")
+        setNavBarTextProperties()
+        self.rootViewController.view.backgroundColor = UIColor(named: "MarvelRed")
+        self.rootViewController.navigationBar.barTintColor = UIColor(named: "MarvelRed")
+        self.rootViewController.navigationBar.tintColor = .white
         self.homeCoordinator = HomeCoordinator(presenter: rootViewController)
     }
     
@@ -27,5 +30,13 @@ final class ApplicationCoordinator: Coordinator {
         window.rootViewController = rootViewController
         homeCoordinator?.start()
         self.window.makeKeyAndVisible()
+    }
+    
+    func setNavBarTextProperties(){
+        guard let font = UIFont(name: "DINCondensed-Bold", size: 23) else { return }
+        let attributes = [NSAttributedString.Key.font : font]
+        let largeAttributes = [NSAttributedString.Key.font : font.withSize(35)]
+        self.rootViewController.navigationBar.titleTextAttributes = attributes
+        self.rootViewController.navigationBar.largeTitleTextAttributes = largeAttributes
     }
 }

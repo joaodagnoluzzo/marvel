@@ -10,11 +10,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol HomeViewControllerDelegate: class {
+    func homeViewControllerShouldPresentDetailsOf(_ character: CharacterEntry)
+}
+
 class HomeViewController: UIViewController {
 
     private var homeView: HomeView?
     private var homeViewModel: HomeViewModel?
     private let disposeBag = DisposeBag()
+    weak var delegate: HomeViewControllerDelegate?
     
     override func loadView() {
         homeView = HomeView(frame: UIScreen.main.bounds)
@@ -23,16 +28,15 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "MARVEL Characters"
         self.homeViewModel = HomeViewModel()
         self.homeViewModel?.loadInitialData()
-        
-        setupCollectionViewDelegateAndDataSource()
+        setupCollectionViewPrefetchDataSource()
         setupCollectionCells()
-
-        
+        setupCollectionCellTapHandling()
     }
     
-    func setupCollectionViewDelegateAndDataSource(){
+    func setupCollectionViewPrefetchDataSource(){
         guard let homeView = self.homeView else { return }
         homeView.collectionView.prefetchDataSource = self
     }
@@ -47,21 +51,22 @@ class HomeViewController: UIViewController {
         }.disposed(by: disposeBag)
     }
     
+    func setupCollectionCellTapHandling(){
+        guard let homeView = self.homeView else { return }
+        homeView
+        .collectionView
+        .rx
+        .modelSelected(CharacterEntry.self)
+            .bind { (character) in
+                self.delegate?.homeViewControllerShouldPresentDetailsOf(character)
+        }.disposed(by: disposeBag)
+    }
+    
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        return indexPath.row >= homeViewModel!.currentOffset
+        let expression = (( indexPath.row >= homeViewModel!.currentOffset)
+                            && (homeViewModel!.currentOffset < homeViewModel!.total))
+        return expression
     }
-}
-
-extension HomeViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        homeViewModel!.total
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-    
-    
 }
 
 extension HomeViewController: UICollectionViewDataSourcePrefetching {
@@ -70,6 +75,4 @@ extension HomeViewController: UICollectionViewDataSourcePrefetching {
             homeViewModel?.loadNewData()
         }
     }
-    
-
 }

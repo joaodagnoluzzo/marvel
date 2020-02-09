@@ -24,6 +24,7 @@ class HomeView: UIView {
     }
     
     func setupView(){
+        self.backgroundColor = UIColor(named: "MarvelRed")
         addSubviews()
         setupSubviewConstraints()
     }
@@ -46,7 +47,7 @@ class HomeView: UIView {
         let size = CGSize(width: width, height: height)
         layout.itemSize = size
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor(named: "SystemColorAdaptive")
+        collectionView.backgroundColor = .clear
         self.addSubview(collectionView)
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
