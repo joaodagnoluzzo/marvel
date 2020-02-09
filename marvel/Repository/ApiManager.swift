@@ -12,7 +12,7 @@ import Alamofire
 import SwiftHash
 
 protocol NetworkManager {
-    func fetchAllCharacters(completion: @escaping DataResult)
+    func fetchAllCharacters(offset: Int, completion: @escaping DataResult)
 }
 
 final class ApiManager : NetworkManager {
@@ -21,10 +21,10 @@ final class ApiManager : NetworkManager {
     private let characters = "/v1/public/characters"
     private let keys = MarvelKeys()
     
-    func fetchAllCharacters(completion: @escaping DataResult){
+    func fetchAllCharacters(offset: Int, completion: @escaping DataResult){
         let timestamp = "\(Date().timeIntervalSince1970)"
         let hash = MD5("\(timestamp)\(keys.marvelPrivateKey)\(keys.marvelPublicKey)").lowercased()
-        let url = "https://gateway.marvel.com:443/v1/public/characters?ts=\(timestamp)&apikey=\(keys.marvelPublicKey)&hash=\(hash)"
+        let url = "https://gateway.marvel.com:443/v1/public/characters?ts=\(timestamp)&apikey=\(keys.marvelPublicKey)&hash=\(hash)&offset=\(offset)"
         
         AF.request(url).response { (response) in
             if response.error != nil {

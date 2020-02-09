@@ -17,8 +17,8 @@ final class Repository {
         self.networkManager = apiManager
     }
     
-    func fetchAllCharacters(completion: @escaping DataResult) {
-        networkManager.fetchAllCharacters(completion: completion)
+    func fetchAllCharacters(offset: Int, completion: @escaping DataResult) {
+        networkManager.fetchAllCharacters(offset: offset, completion: completion)
     }
     
 }

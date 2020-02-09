@@ -24,21 +24,52 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.homeViewModel = HomeViewModel()
-        self.homeViewModel?.loadData()
+        self.homeViewModel?.loadInitialData()
         
+        setupCollectionViewDelegateAndDataSource()
         setupCollectionCells()
 
         
     }
     
+    func setupCollectionViewDelegateAndDataSource(){
+        guard let homeView = self.homeView else { return }
+        homeView.collectionView.prefetchDataSource = self
+    }
     
     func setupCollectionCells(){
         guard let homeViewModel = self.homeViewModel else { return }
         guard let homeView = self.homeView else { return }
         homeViewModel.charactersList.bind(to: homeView.collectionView.rx.items(cellIdentifier: "cell", cellType: HomeCollectionViewCell.self)) {
             index, model, cell in
-            cell.configureWith(imageUrl: homeViewModel.formatUrl(model.thumbnail))
+            cell.configureWith(name: model.name, imageUrl: homeViewModel.formatUrl(model.thumbnail))
             
         }.disposed(by: disposeBag)
     }
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= homeViewModel!.currentOffset
+    }
+}
+
+extension HomeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        homeViewModel!.total
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+    
+}
+
+extension HomeViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: isLoadingCell) {
+            homeViewModel?.loadNewData()
+        }
+    }
+    
+
 }

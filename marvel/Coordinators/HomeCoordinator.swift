@@ -21,6 +21,6 @@ final class HomeCoordinator: Coordinator {
         let homeViewController = HomeViewController()
         self.presenter.pushViewController(homeViewController, animated: true)
         self.homeViewController = homeViewController
-        
+        self.homeViewController?.title = "Characters"
     }
 }

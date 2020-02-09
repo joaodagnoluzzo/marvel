@@ -17,6 +17,9 @@ final class ApplicationCoordinator: Coordinator {
     init(window: UIWindow) {
         self.window = window
         self.rootViewController = UINavigationController()
+        self.rootViewController.navigationBar.isTranslucent = false
+        self.rootViewController.navigationBar.prefersLargeTitles = true
+        self.rootViewController.view.backgroundColor = UIColor(named: "SystemColorAdaptive")
         self.homeCoordinator = HomeCoordinator(presenter: rootViewController)
     }
     
