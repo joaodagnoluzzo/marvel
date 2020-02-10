@@ -30,7 +30,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.title = "MARVEL Characters"
         self.homeViewModel = HomeViewModel()
-        self.homeViewModel?.loadInitialData()
+        self.homeViewModel?.loadInitialData(completion: { (error) in
+            if let error = error {
+                let msg = UIAlertController().errorMsg(error.errorDescription!, handler: nil)
+                self.present(msg, animated: true, completion: nil)
+            }
+        })
         setupCollectionViewPrefetchDataSource()
         setupCollectionCells()
         setupCollectionCellTapHandling()
@@ -72,7 +77,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
-            homeViewModel?.loadNewData()
+            homeViewModel?.loadNewData(completion: { (error) in
+                if let error = error {
+                    let msg = UIAlertController().errorMsg(error.errorDescription!, handler: nil)
+                    self.present(msg, animated: true, completion: nil)
+                }
+            })
         }
     }
 }

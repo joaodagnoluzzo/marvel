@@ -41,7 +41,12 @@ class DetailsViewController: UIViewController {
         guard let character = self.character else { return }
         detailsViewModel = DetailsViewModel(character: character)
         self.character = nil
-        self.detailsViewModel?.loadInitialData()
+        self.detailsViewModel?.loadInitialData(completion: { (error) in
+            if let error = error {
+                let msg = UIAlertController().errorMsg(error.errorDescription!, handler: nil)
+                self.present(msg, animated: true, completion: nil)
+            }
+        })
     }
     
     func setupCollectionCells(){
@@ -63,7 +68,12 @@ class DetailsViewController: UIViewController {
 extension DetailsViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
-            detailsViewModel?.loadNewData()
+            detailsViewModel?.loadNewData(completion: { (error) in
+                if let error = error {
+                    let msg = UIAlertController().errorMsg(error.errorDescription!, handler: nil)
+                    self.present(msg, animated: true, completion: nil)
+                }
+            })
         }
     }
 }

@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		0B033644791664E7EE2F803E /* Pods_marvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7E6C51D31A2F4759B06D48 /* Pods_marvel.framework */; };
 		C32105B5C8001BF6039100A5 /* Pods_marvelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE722E61BEF3B0E65B2FB4B4 /* Pods_marvelTests.framework */; };
+		CF19319F23F1CECD009F84A1 /* marvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF19319E23F1CECD009F84A1 /* marvelTests.swift */; };
 		CF682C8723EEE647002C4720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF682C8623EEE647002C4720 /* AppDelegate.swift */; };
 		CF682C8923EEE647002C4720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF682C8823EEE647002C4720 /* SceneDelegate.swift */; };
 		CF682C9023EEE648002C4720 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF682C8F23EEE648002C4720 /* Assets.xcassets */; };
 		CF682C9323EEE648002C4720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF682C9123EEE648002C4720 /* LaunchScreen.storyboard */; };
-		CF682C9E23EEE649002C4720 /* marvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF682C9D23EEE649002C4720 /* marvelTests.swift */; };
 		CF8C5BF723F08850009FDF42 /* ComicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C5BF623F08850009FDF42 /* ComicsCollectionViewCell.swift */; };
+		CF8C5BFD23F17A90009FDF42 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C5BFC23F17A90009FDF42 /* UIAlertControllerExtension.swift */; };
 		CFD4250A23EEE8C4005CEB8B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4250923EEE8C4005CEB8B /* Coordinator.swift */; };
 		CFD4250C23EEE8F1005CEB8B /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4250B23EEE8F1005CEB8B /* ApplicationCoordinator.swift */; };
 		CFD4251023EEEA0F005CEB8B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD4250F23EEEA0F005CEB8B /* HomeViewController.swift */; };
@@ -49,6 +50,7 @@
 		9E7E6C51D31A2F4759B06D48 /* Pods_marvel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_marvel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE722E61BEF3B0E65B2FB4B4 /* Pods_marvelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_marvelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE94F069B8F202A02920E6FF /* Pods-marvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvel.debug.xcconfig"; path = "Target Support Files/Pods-marvel/Pods-marvel.debug.xcconfig"; sourceTree = "<group>"; };
+		CF19319E23F1CECD009F84A1 /* marvelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = marvelTests.swift; sourceTree = "<group>"; };
 		CF682C8323EEE647002C4720 /* marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF682C8623EEE647002C4720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF682C8823EEE647002C4720 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,9 +58,9 @@
 		CF682C9223EEE648002C4720 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF682C9423EEE648002C4720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF682C9923EEE649002C4720 /* marvelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = marvelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF682C9D23EEE649002C4720 /* marvelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = marvelTests.swift; sourceTree = "<group>"; };
 		CF682C9F23EEE649002C4720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF8C5BF623F08850009FDF42 /* ComicsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF8C5BFC23F17A90009FDF42 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		CFD4250923EEE8C4005CEB8B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CFD4250B23EEE8F1005CEB8B /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		CFD4250F23EEEA0F005CEB8B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		CF682C8523EEE647002C4720 /* marvel */ = {
 			isa = PBXGroup;
 			children = (
+				CF8C5BFE23F17A94009FDF42 /* Extensions */,
 				CFD4252623F04901005CEB8B /* ApplicationDelegates */,
 				CFD4252523F048F4005CEB8B /* Details */,
 				CFD4250E23EEE969005CEB8B /* Home */,
@@ -155,10 +158,18 @@
 		CF682C9C23EEE649002C4720 /* marvelTests */ = {
 			isa = PBXGroup;
 			children = (
-				CF682C9D23EEE649002C4720 /* marvelTests.swift */,
+				CF19319E23F1CECD009F84A1 /* marvelTests.swift */,
 				CF682C9F23EEE649002C4720 /* Info.plist */,
 			);
 			path = marvelTests;
+			sourceTree = "<group>";
+		};
+		CF8C5BFE23F17A94009FDF42 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CF8C5BFC23F17A90009FDF42 /* UIAlertControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CFD4250D23EEE958005CEB8B /* Coordinators */ = {
@@ -277,6 +288,7 @@
 					};
 					CF682C9823EEE649002C4720 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = CF682C8223EEE647002C4720;
 					};
 				};
@@ -401,6 +413,7 @@
 				CFD4251B23EF002F005CEB8B /* Repository.swift in Sources */,
 				CFD4252023EF0878005CEB8B /* HomeView.swift in Sources */,
 				CFD4252E23F051C3005CEB8B /* DetailsViewModel.swift in Sources */,
+				CF8C5BFD23F17A90009FDF42 /* UIAlertControllerExtension.swift in Sources */,
 				CFD4252423F0483E005CEB8B /* DetailsCoordinator.swift in Sources */,
 				CF682C8723EEE647002C4720 /* AppDelegate.swift in Sources */,
 				CFD4252C23F050E6005CEB8B /* DetailsView.swift in Sources */,
@@ -413,7 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF682C9E23EEE649002C4720 /* marvelTests.swift in Sources */,
+				CF19319F23F1CECD009F84A1 /* marvelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +610,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L23XZ22LBQ;
 				INFOPLIST_FILE = marvelTests/Info.plist;
@@ -608,6 +622,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.JoaoDAgnoluzzo.marvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/marvel.app/marvel";
@@ -620,6 +635,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L23XZ22LBQ;
 				INFOPLIST_FILE = marvelTests/Info.plist;

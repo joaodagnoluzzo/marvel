@@ -12,30 +12,35 @@ import RxCocoa
 
 final class HomeViewModel {
     
-    private let repository = Repository()
+    private let repository: Repository!
     let charactersList: BehaviorRelay<[CharacterEntry]> = BehaviorRelay<[CharacterEntry]>(value: [])
     var currentOffset: Int = 0
     var total: Int = 0
     
     private var isFetching: Bool = false
     
-    func loadInitialData(){
+    init(repository: Repository = Repository()) {
+        self.repository = repository
+    }
+    
+    func loadInitialData(completion: @escaping (SystemError?)->()){
         guard !isFetching else { return }
         isFetching = true
         repository.fetchAllCharacters(offset: currentOffset) { (data, error) in
             if let error = error {
-                print(error.errorDescription!)
+                completion(error)
             } else if let data = data {
                 guard let max = data.total, let offset = data.offset else { return }
                 self.total = max
                 self.currentOffset = offset
                 self.charactersList.accept(data.results)
+                completion(nil)
             }
             self.isFetching = false
         }
     }
     
-    func loadNewData(){
+    func loadNewData(completion: @escaping (SystemError?)->()){
         guard !isFetching else { return }
         isFetching = true
         if currentOffset + 20 <= total {
@@ -45,11 +50,12 @@ final class HomeViewModel {
         }
         repository.fetchAllCharacters(offset: currentOffset){ (data, error) in
             if let error = error {
-                print(error.errorDescription!)
+                completion(error)
             } else if let data = data {
                 var newList: [CharacterEntry] = self.charactersList.value
                 newList.append(contentsOf: data.results)
                 self.charactersList.accept(newList)
+                completion(nil)
             }
             self.isFetching = false
         }

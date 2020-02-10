@@ -16,7 +16,7 @@ protocol NetworkManager {
     func fetchComicsForCharacter(id: Int, offset: Int, completion: @escaping ComicsResult)
 }
 
-final class ApiManager : NetworkManager {
+class ApiManager : NetworkManager {
     
     private let baseUrl = "http://gateway.marvel.com"
     private let characters = "/v1/public/characters"

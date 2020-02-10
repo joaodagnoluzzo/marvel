@@ -19,7 +19,7 @@ final class DetailsViewModel{
     var total: Int = 0
     private var isFetching: Bool = false
     
-    init(character: CharacterEntry){
+    init(character: CharacterEntry, repository: Repository = Repository()){
         self.character = character
     }
     
@@ -41,24 +41,25 @@ final class DetailsViewModel{
         return "\(path)/standard_amazing.\(ext)"
     }
     
-    func loadInitialData(){
+    func loadInitialData(completion: @escaping (SystemError?)->()){
         guard !isFetching else { return }
         guard let id = character.id else { return }
         isFetching = true
         repository.fetchComicsForCharacter(id: id, offset: currentOffset) { (data, error) in
             if let error = error {
-                print(error.errorDescription!)
+                completion(error)
             } else if let data = data {
                 guard let max = data.total, let offset = data.offset else { return }
                 self.total = max
                 self.currentOffset = offset
                 self.comicsList.accept(data.results)
+                completion(nil)
             }
             self.isFetching = false
         }
     }
     
-    func loadNewData(){
+    func loadNewData(completion: @escaping (SystemError?)->()){
         guard !isFetching else { return }
         guard let id = character.id else { return }
         isFetching = true
@@ -69,11 +70,12 @@ final class DetailsViewModel{
         }
         repository.fetchComicsForCharacter(id: id, offset: currentOffset){ (data, error) in
             if let error = error {
-                print(error.errorDescription!)
+                completion(error)
             } else if let data = data {
                 var newList: [ComicEntry] = self.comicsList.value
                 newList.append(contentsOf: data.results)
                 self.comicsList.accept(newList)
+                completion(nil)
             }
             self.isFetching = false
         }

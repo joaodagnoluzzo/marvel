@@ -12,8 +12,10 @@ import SnapKit
 final class DetailsView: UIView {
     
     private var imageView: UIImageView!
+    private var imageViewSpinningWheel: UIActivityIndicatorView!
     private var participationLabel: UILabel!
     var comicsCollectionView: UICollectionView!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,17 +36,21 @@ final class DetailsView: UIView {
     func configureWith(imageUrl: String){
         guard let url = URL(string: imageUrl) else { return }
         imageView.af_setImage(withURL: url, placeholderImage: .none, filter: .none, progress: .none, progressQueue: .main, imageTransition: .crossDissolve(0.2), runImageTransitionIfCached: false) { _ in
+            self.imageViewSpinningWheel.stopAnimating()
+            self.imageViewSpinningWheel.removeFromSuperview()
         }
     }
     
     func addSubViews(){
         addImageView()
+        addImageViewSpinningWheel()
         addParticipationLabel()
         addComicsCollectionView()
     }
     
     func setupSubViewsConstraints(){
         setupImageViewConstraints()
+        setupImageViewSpinningWheelConstraints()
         setupParticipationLabelConstraints()
         setupComicsCollectionViewConstraints()
     }
@@ -62,6 +68,20 @@ final class DetailsView: UIView {
             make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(margin)
             make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).inset(margin)
             make.height.equalTo(imageView.snp.width)
+        }
+    }
+    
+    func addImageViewSpinningWheel(){
+        imageViewSpinningWheel = UIActivityIndicatorView(style: .large)
+        imageViewSpinningWheel.hidesWhenStopped = true
+        self.addSubview(imageViewSpinningWheel)
+        imageViewSpinningWheel.startAnimating()
+    }
+    
+    func setupImageViewSpinningWheelConstraints(){
+        imageViewSpinningWheel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(imageView.snp.centerX)
+            make.centerY.equalTo(imageView.snp.centerY)
         }
     }
     
